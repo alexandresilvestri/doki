@@ -1,4 +1,5 @@
 import type { Knex } from 'knex'
+import { conversionConfig } from './lib/db/knex.config'
 
 const config: { [key: string]: Knex.Config } = {
   development: {
@@ -18,6 +19,7 @@ const config: { [key: string]: Knex.Config } = {
       directory: './lib/db/seeds',
       extension: 'ts',
     },
+    ...conversionConfig,
   },
 
   test: {
@@ -33,6 +35,7 @@ const config: { [key: string]: Knex.Config } = {
       directory: './lib/db/migrations',
       extension: 'ts',
     },
+    ...conversionConfig,
   },
 
   production: {
@@ -43,6 +46,7 @@ const config: { [key: string]: Knex.Config } = {
       extension: 'ts',
     },
     pool: { min: 2, max: 10 },
+    ...conversionConfig,
   },
 }
 
