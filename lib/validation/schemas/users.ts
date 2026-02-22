@@ -32,12 +32,17 @@ const passwordSchema = z
 	)
 	.refine((val) => !/\s/.test(val), 'Password cannot contain spaces')
 
+const roleSchema = z.enum(['admin', 'manager', 'viewer'], {
+	error: 'Role must be admin, manager, or viewer'
+})
+
+
 export const createUserSchema = z.object({
 	body: z.object({
 		name: nameSchema,
 		email: emailSchema,
 		password: passwordSchema,
-		userTypeId: z.string().trim().min(1, 'User type is required'),
+		roleId: roleSchema,
 	}),
 })
 
