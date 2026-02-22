@@ -39,7 +39,10 @@ const wrapIdentifier: Knex.Config['wrapIdentifier'] = (value, origImpl) => {
 	return origImpl(snakeCaseIgnoringNumbers(value))
 }
 
-export const conversionConfig: Pick<Knex.Config, 'postProcessResponse' | 'wrapIdentifier'> = {
+export const conversionConfig: Pick<
+	Knex.Config,
+	'postProcessResponse' | 'wrapIdentifier'
+> = {
 	postProcessResponse,
 	wrapIdentifier,
 }
